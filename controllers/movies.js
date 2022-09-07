@@ -55,7 +55,7 @@ const deleteMovie = (req, res, next) => {
       } else if (!movie.owner.equals(owner)) {
         throw new ForbiddenError('Вы можете удалить созданную вами карточку');
       } else {
-        movie.remove().then(() => res.send(movie));
+        return movie.remove().then(() => res.send(movie));
       }
     }).catch((err) => {
       if (err.name === 'CastError') {
