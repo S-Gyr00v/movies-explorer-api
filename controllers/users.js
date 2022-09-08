@@ -29,6 +29,8 @@ const updateUser = (req, res, next) => {
     .catch((err) => {
       if (err.name === 'ValidationError' || err.name === 'CastError') {
         next(new BadReqError('Переданы некорректные данные'));
+      } else if (err.code === 11000) {
+        next(new RegistredError('Ящик, который принадлежит другому юзеру'));
       } else {
         next(err);
       }

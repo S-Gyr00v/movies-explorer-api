@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const { errors } = require('celebrate');
 const helmet = require('helmet');
 const cors = require('./middlewares/cors');
-const NotFoundError = require('./errors/notFoundError');
+
 const routes = require('./routes');
 const limiter = require('./middlewares/limiter');
 const error = require('./middlewares/error');
@@ -22,9 +22,6 @@ app.use(requestLogger);
 app.use(limiter);
 app.use(routes);
 
-app.use((req, res, next) => {
-  next(new NotFoundError('Обращение к несуществующей странице'));
-});
 app.use(errorLogger);
 app.use(errors());
 app.use(error);

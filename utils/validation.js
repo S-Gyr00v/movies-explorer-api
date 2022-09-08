@@ -29,8 +29,8 @@ const moviesCreateValidation = celebrate({
 
 const userUpdateValidation = celebrate({
   body: Joi.object().keys({
-    name: Joi.string().min(2).max(30),
-    email: Joi.string().email(),
+    name: Joi.string().required().min(2).max(30),
+    email: Joi.string().required().email(),
   }).unknown(true),
 });
 
@@ -43,9 +43,15 @@ const singinValidation = celebrate({
 
 const signupValidation = celebrate({
   body: Joi.object().keys({
-    name: Joi.string().min(2).max(30),
+    name: Joi.string().required().min(2).max(30),
     email: Joi.string().required().email(),
     password: Joi.string().required().min(8),
+  }),
+});
+
+const movieIdValidation = celebrate({
+  body: Joi.object().keys({
+    id: Joi.string().hex().length(24),
   }),
 });
 
@@ -54,4 +60,5 @@ module.exports = {
   userUpdateValidation,
   singinValidation,
   signupValidation,
+  movieIdValidation,
 };
