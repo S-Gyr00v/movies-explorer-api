@@ -9,7 +9,7 @@ const routes = require('./routes');
 const limiter = require('./middlewares/limiter');
 const error = require('./middlewares/error');
 
-const { PORT = 3002, NODE_ENV, BD_URL } = process.env;
+const { PORT = 3000, NODE_ENV, BD_URL } = process.env;
 const app = express();
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
