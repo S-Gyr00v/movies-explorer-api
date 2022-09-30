@@ -1,5 +1,5 @@
 const allowedCors = [
-  'https://15pr.site',
+  'http://diplomadom.ru/',
 ];
 
 const DEFAULT_ALLOWED_METHODS = 'GET,HEAD,PUT,PATCH,POST,DELETE';
