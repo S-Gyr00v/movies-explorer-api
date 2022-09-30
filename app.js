@@ -3,8 +3,8 @@ const express = require('express');
 const mongoose = require('mongoose');
 const { errors } = require('celebrate');
 const helmet = require('helmet');
-// const cors = require('./middlewares/cors');
-const cors = require('cors');
+const cors = require('./middlewares/cors');
+// const cors = require('cors');
 const routes = require('./routes');
 const limiter = require('./middlewares/limiter');
 const error = require('./middlewares/error');
@@ -14,7 +14,7 @@ const app = express();
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
 app.use(helmet());
-app.use(cors());
+app.use(cors);
 mongoose.connect(NODE_ENV === 'production' ? BD_URL : 'mongodb://localhost:27017/moviesdb');
 
 app.use(express.json());
